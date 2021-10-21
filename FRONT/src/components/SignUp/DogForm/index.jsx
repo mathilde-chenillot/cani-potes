@@ -28,6 +28,7 @@ const DogForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     dispatch(dogSignUp(data));
   };
 
@@ -137,7 +138,7 @@ const DogForm = () => {
               <div className="dog__form__input-infos__others__surname">
                 <label htmlFor="surname" className="dog__title">
                   Il s'appelle
-                  <input type="text" placeholder="Nom" {...register('surname', { required: 'Veuillez renseigner son nom', maxLength: { value: 20, message: 'Veuillez ne pas dépasser 20 caractères.' } })} id="surname" defaultValue="Alana" />
+                  <input type="text" placeholder="Nom" {...register('surname', { required: 'Veuillez renseigner son nom', maxLength: { value: 20, message: 'Veuillez ne pas dépasser 20 caractères.' } })} id="surname" />
                 </label>
                 {errors.surname && <p className="errors">{errors.surname.message}</p>}
               </div>
@@ -147,11 +148,13 @@ const DogForm = () => {
                   Ajouter une photo de mon chien
                   <input type="file" placeholder="Photo de mon chien" {...register('photo_dog')} accept="image/png, image/jpeg" />
                 </label>
-                {/* <button type="button" className="dog__form__input-infos__others__add-dog"><img src={add} alt="add icon" />Ajouter un chien</button> */}
               </div>
               {/* Description */}
               <div className="dog__form__input-infos__others__description">
-                <textarea placeholder="Une petite description de votre chien et de ce que vous recherchez :)" {...register('description', { maxLength: { value: 200, message: 'Veuillez ne pas dépasser 200 caractères.' } })} />
+                <textarea
+                  placeholder="Une petite description de votre chien et de ce que vous recherchez :)"
+                  {...register('description', { maxLength: { value: 200, message: 'Veuillez ne pas dépasser 200 caractères.' } })}
+                />
               </div>
             </div>
           </div>
