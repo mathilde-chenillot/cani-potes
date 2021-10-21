@@ -9,11 +9,13 @@ import {
 import L from 'leaflet';
 
 import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
+import { apikey } from '../../../utils/arcGiskey';
 
 // import composants popup informations ride
 import RideInformations from '../RideInformations/index';
 
 import mapPin from '../../../assets/img/maps-and-flags.svg';
+import currentPositionMapPin from '../../../assets/img/blue-pin.svg';
 import { getOneRideById, getRideIsLoading } from '../../../actions/rides';
 
 import 'leaflet/dist/leaflet.css';
@@ -22,7 +24,6 @@ import 'leaflet/dist/leaflet.css';
 import './map.scss';
 
 const Map = () => {
-  const apikey = 'AAPKbde72a12e3ff4574b3edd95295b1d13d5-bGBIhj88MhjknVOZZpLcC1yEkpv4yu2Bx8MRWji_av4Hj2aqwc1AsUJ2UyTK3Q';
   const { allRides } = useSelector((state) => state.rides);
   const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -32,6 +33,13 @@ const Map = () => {
     inconRetInaUrl: mapPin,
     popupAnchor: [-0, -0],
     iconSize: [22, 35],
+  });
+
+  const currentPositionIcon = new L.Icon({
+    iconUrl: currentPositionMapPin,
+    inconRetInaUrl: currentPositionMapPin,
+    popupAnchor: [-0, -0],
+    iconSize: [22, 25],
   });
 
   const fillBlueOptions = {
@@ -70,9 +78,9 @@ const Map = () => {
 
       {
         currentPosition ? (
-          <Marker position={currentPosition} />
+          <Marker position={currentPosition} icon={currentPositionIcon} />
         ) : (
-          <Marker position={user.position} />
+          <Marker position={user.position} icon={currentPositionIcon} />
         )
       }
 

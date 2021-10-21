@@ -62,7 +62,6 @@ const RideDetails = () => {
     dispatch(getOneRideById(id));
   }, [userProfile.renderAgain]);
 
-
   const [startPointAddress, setStartPointAddress] = useState('');
   const [endPointAddress, setEndPointAddress] = useState('');
   reverseGeocoding(start_coordinate, setStartPointAddress);
@@ -182,7 +181,6 @@ const RideDetails = () => {
               <div className="ride-details">
                 {isRedirect && <Redirect to="/home" />}
                 <section className="ride-details__map">
-                  {/* <div className="ride-details__infos__map"> */}
                   <div className="ride-details__leaflet">
                     {
                         isLoading ? (
@@ -200,7 +198,6 @@ const RideDetails = () => {
                         )
                       }
                   </div>
-                  {/* </div> */}
                 </section>
                 <section className="ride-details__infos">
                   <div className="ride-details__infos__header">
@@ -255,7 +252,7 @@ const RideDetails = () => {
                                 ✖
                               </button>
                             )}
-                            <Link className="ride-details__current-user-link" key={participant.participant_id}>
+                            <Link className="ride-details__current-user-link" key={participant.participant_id} to={`/profile/${participant.participant_id}`}>
                               <div className="ride-details__current-user">
                                 <div className="ride-details__current-user__avatar">
                                   <img src={`${dburlWithoutApi}/user_resized/${participant.participant_photo}`} alt="user" />
@@ -396,37 +393,41 @@ const RideDetails = () => {
 
                 {
                   isDeleteRideModalOpen && (
-                    <div className="ride-details__modal">
-                      <p
-                        className="ride-details__modal__text"
-                      >
-                        Attention, vous êtes l'organisateur de cette balade
-                      </p>
-                      <p
-                        className="ride-details__modal__text"
-                      >
-                        En vous retirant vous la supprimerez
-                      </p>
-                      <p
-                        className="ride-details__modal__text"
-                      >
-                        Continuer ?
-                      </p>
-                      <div className="ride-details__modal__btn-container">
+                    <div className="ride-details__modal-wrapper">
+                      <div className="ride-details__modal">
                         <button
                           type="button"
-                          className="ride-details__modal__back-btn"
+                          className="ride-details__modal__close"
                           onClick={() => setIsDeleteRideModalOpen(false)}
                         >
-                          Retour
+                          ✖
                         </button>
-                        <button
-                          type="button"
-                          className="ride-details__modal__delete-btn"
-                          onClick={() => handleDelete()}
-                        >
-                          Supprimer
-                        </button>
+                        <p className="ride-details__modal__bold">Attention !</p>
+                        <p className="ride-details__modal__text">
+                          Vous êtes l'organisateur de cette balade.
+                        </p>
+                        <p className="ride-details__modal__text">
+                          En vous retirant vous la supprimerez.
+                        </p>
+                        <p className="ride-details__modal__text">
+                          Continuer ?
+                        </p>
+                        <div className="ride-details__modal__btn-container">
+                          <button
+                            type="button"
+                            className="ride-details__modal__back-btn"
+                            onClick={() => setIsDeleteRideModalOpen(false)}
+                          >
+                            Retour
+                          </button>
+                          <button
+                            type="button"
+                            className="ride-details__modal__delete-btn"
+                            onClick={() => handleDelete()}
+                          >
+                            Supprimer
+                          </button>
+                        </div>
                       </div>
                     </div>
                   )
@@ -435,6 +436,16 @@ const RideDetails = () => {
                 {
                   isKickUserModalOpen && (
                     <div className="ride-details__modal">
+                      <button
+                        type="button"
+                        className="ride-details__modal__close"
+                        onClick={() => {
+                          setIsKickUserModalOpen(false);
+                          setUserKicked(0);
+                        }}
+                      >
+                        ✖
+                      </button>
                       <p
                         className="ride-details__modal__text"
                       >
@@ -442,7 +453,7 @@ const RideDetails = () => {
                           participants.find(
                             (participant) => participant.participant_id === userKicked,
                           ).participant_first_name
-                        } de la balade ?
+                        } de la balade
                       </p>
                       <p
                         className="ride-details__modal__text"

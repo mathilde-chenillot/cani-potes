@@ -13,6 +13,7 @@ import L from 'leaflet';
 // import esri for geocoding
 import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
 import { geocodeService } from 'esri-leaflet-geocoder';
+import { apikey } from '../../utils/arcGiskey';
 
 import { createRide } from '../../actions/rides';
 
@@ -22,7 +23,6 @@ import startPointFlag from '../../assets/img/info-ride/startPointFlag.svg';
 import endPointFlag from '../../assets/img/info-ride/endPointFlag.svg';
 
 const CreateRide = () => {
-  const apikey = 'AAPKbde72a12e3ff4574b3edd95295b1d13d5-bGBIhj88MhjknVOZZpLcC1yEkpv4yu2Bx8MRWji_av4Hj2aqwc1AsUJ2UyTK3Q';
   const { failedToCreateRide, errorMessage, rideIsCreated } = useSelector((state) => state.rides);
   const { user } = useSelector((state) => state);
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -292,12 +292,13 @@ const CreateRide = () => {
           <label htmlFor="description">Description de ma balade</label>
           <textarea
             placeholder="Je souhaite me faire des Cani Potes !"
+            rows="6"
             {...register('description', { required: 'Veuillez remplir la description.', maxLength: { value: 200, message: 'Veuillez ne pas dépasser 200 caractères.' } })}
           />
           {errors.description && <span>{errors.description.message}</span>}
         </div>
 
-        <input type="submit" />
+        <input type="submit" className="create-ride__field__submit-btn" />
       </form>
     </main>
   );

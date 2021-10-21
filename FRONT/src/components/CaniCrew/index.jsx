@@ -12,21 +12,34 @@ import raph from '../../assets/team/raph.jpg';
 import raphPet from '../../assets/team/raph_pet.jpg';
 import anne from '../../assets/team/anne.jpg';
 import annePet from '../../assets/team/anne_pet.jpg';
+import julien from '../../assets/team/julien.jpg';
+import julienPet from '../../assets/team/julien_pet.jpg';
+import mathilde from '../../assets/team/mathilde.jpg';
+import mathildePet from '../../assets/team/mathilde_pet.jpg';
 
 import './canicrew.scss';
 
 const CaniCrew = () => {
-  const [count, setCount] = useState(2);
+  const [count, setCount] = useState(0);
 
   const devs = [
     {
-      firstName: 'Raphaël',
-      ghLink: 'https://github.com/RaphaelCharousset',
-      linkedinLink: 'https://www.linkedin.com/in/raphaelcharousset/',
-      photo: raph,
-      petPhoto: raphPet,
-      role: 'Lead Front & Git Master',
-      text: 'Il suffit de display flex !',
+      firstName: 'Mathilde',
+      ghLink: 'https://github.com/mathilde-chenillot',
+      linkedinLink: 'https://www.linkedin.com/in/mathildechenillot/',
+      photo: mathilde,
+      petPhoto: mathildePet,
+      role: 'Product Owner',
+      text: 'Oh une chauve-souris !',
+    },
+    {
+      firstName: 'Julien',
+      ghLink: 'https://github.com/JulienCLLT',
+      linkedinLink: 'https://www.linkedin.com/in/collet-julien/',
+      photo: julien,
+      petPhoto: julienPet,
+      role: 'Scrum Master',
+      text: 'Pensez sécurité !',
     },
     {
       firstName: 'Anne',
@@ -38,24 +51,6 @@ const CaniCrew = () => {
       text: 'Vive les conflits avec git merge!',
     },
     {
-      firstName: 'Mathilde',
-      ghLink: 'https://github.com/mathilde-chenillot',
-      linkedinLink: 'https://www.linkedin.com/in/mathildechenillot/',
-      photo: logo,
-      petPhoto: logo,
-      role: 'Product Owner',
-      text: 'Oh une chauve-souris !',
-    },
-    {
-      firstName: 'Julien',
-      ghLink: 'https://github.com/JulienCLLT',
-      linkedinLink: 'https://www.linkedin.com/in/collet-julien/',
-      photo: logo,
-      petPhoto: logo,
-      role: 'Scrum Master',
-      text: 'Pensez sécurité !',
-    },
-    {
       firstName: 'Alexandra',
       ghLink: 'https://github.com/Alekiel42',
       linkedinLink: 'https://www.linkedin.com/in/alexandrabercoff/',
@@ -63,6 +58,15 @@ const CaniCrew = () => {
       petPhoto: alexPet,
       role: 'Lead Back',
       text: "Allez SQL s'il te plait !!!",
+    },
+    {
+      firstName: 'Raphaël',
+      ghLink: 'https://github.com/RaphaelCharousset',
+      linkedinLink: 'https://www.linkedin.com/in/raphaelcharousset/',
+      photo: raph,
+      petPhoto: raphPet,
+      role: 'Lead Front & Git Master',
+      text: 'Il suffit de display flex !',
     },
   ];
 

@@ -167,7 +167,7 @@ const Profile = () => {
         profile.isLoading ? (
           <Loader />
         ) : (
-          <>
+          <div className="profile-page__content-wrapper">
             <header className="profile-page__header">
               <div className="profile-page__header-container">
                 <div className="profile-page__header__avatar">
@@ -194,22 +194,71 @@ const Profile = () => {
                       <span className="profile-page__header__user__zipcode">{profile.zip_code}</span>
                     )
                   }
+                  {
+                    profileIsUser && (
+                      <div
+                        className="profile-page__header__edit  edit-btn"
+                        onClick={toggleEditUser}
+                      >
+                        {isEditingUser ? 'Retour' : (
+                          <>
+                            <img src={edit} alt="edit" />
+                            Modifier
+                          </>
+                        )}
+                      </div>
+                    )
+                  }
                 </div>
-                {
-                  profileIsUser && (
-                    <div
-                      className="profile-page__header__edit  edit-btn"
-                      onClick={toggleEditUser}
+                <section className="profile-page__info-user">
+                  {profileIsUser && isEditingUser && (
+                    <button
+                      className="profile-page__info-user__delete-account-btn"
+                      type="button"
+                      onClick={() => {
+                        setInputDelete('');
+                        setFailedToDelete(false);
+                        setIsModalAccountOpen(true);
+                      }}
                     >
-                      {isEditingUser ? 'Retour' : (
-                        <>
-                          <img src={edit} alt="edit" />
-                          Modifier
-                        </>
-                      )}
+                      Supprimer mon compte
+                    </button>
+                  )}
+                  {isEditingUser && (
+                    <div className="profile-page__info-user__submit">
+                      <button
+                        type="submit"
+                        onClick={handleUpdateUser}
+                      >
+                        Enregistrer vos infos
+                      </button>
                     </div>
-                  )
-                }
+                  )}
+                  { isEditingUser && (
+                    <p className="profile-page__info-user__content">
+                      <span className="profile-page__info-user__content-field">
+                        {
+                        isEditingUser && (
+                          <input
+                            type="text"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                          />
+                        )
+                      }
+                        {
+                        isEditingUser && (
+                          <input
+                            type="text"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                          />
+                        )
+                      }
+                      </span>
+                    </p>
+                  )}
+                </section>
               </div>
             </header>
 
@@ -223,56 +272,6 @@ const Profile = () => {
                 firstName={user.first_name}
               />
             )}
-
-            <section className="profile-page__info-user">
-              {profileIsUser && isEditingUser && (
-                <button
-                  className="profile-page__info-user__delete-account-btn"
-                  type="button"
-                  onClick={() => {
-                    setInputDelete('');
-                    setFailedToDelete(false);
-                    setIsModalAccountOpen(true);
-                  }}
-                >
-                  Supprimer mon compte
-                </button>
-              )}
-              { isEditingUser && (
-                <p className="profile-page__info-user__content">
-                  <span className="profile-page__info-user__content-field">
-                    {
-                    isEditingUser && (
-                      <input
-                        type="text"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                      />
-                    )
-                  }
-                    {
-                    isEditingUser && (
-                      <input
-                        type="text"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                      />
-                    )
-                  }
-                  </span>
-                </p>
-              )}
-              {isEditingUser && (
-                <div className="profile-page__info-user__submit">
-                  <button
-                    type="submit"
-                    onClick={handleUpdateUser}
-                  >
-                    Enregistrer vos infos
-                  </button>
-                </div>
-              )}
-            </section>
 
             <section className="profile-page__info-dogs">
               {
@@ -312,14 +311,14 @@ const Profile = () => {
                 ))
               }
             </section>
-          </>
+          </div>
         )
       }
 
       {/* DOG MODAL */}
       {isModalOpen && (
-        <div className="profile-page__modal">
-          <div className="profile-page__modal__container">
+        <div className="profile-page__modal__wrapper">
+          <div className="profile-page__modal">
             <button
               className="profile-page__modal__close"
               type="button"
@@ -328,8 +327,7 @@ const Profile = () => {
               ✖
             </button>
 
-            <p>Attention</p>
-            <p>Vous avez des modifications non enregistrées</p>
+            <p>Vous avez des modifications non enregistrées.</p>
 
             <div className="profile-page__modal__btn">
               <button
@@ -357,8 +355,8 @@ const Profile = () => {
 
       {/* DOG PICTURE MODAL */}
       {isModalPhotoOpen && (
-        <div className="profile-page__modal">
-          <div className="profile-page__modal__container">
+        <div className="profile-page__modal__wrapper">
+          <div className="profile-page__modal">
             <button
               className="profile-page__modal__close"
               type="button"
@@ -389,8 +387,8 @@ const Profile = () => {
 
       {/* DOG DELETE MODAL */}
       {isModalDeleteDogIsOpen && (
-        <div className="profile-page__modal">
-          <div className="profile-page__modal__container">
+        <div className="profile-page__modal__wrapper">
+          <div className="profile-page__modal">
             <button
               className="profile-page__modal__close"
               type="button"

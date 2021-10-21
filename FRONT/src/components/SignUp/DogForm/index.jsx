@@ -62,7 +62,7 @@ const DogForm = () => {
 
               {/* Weight */}
               <div className="dog__form__input-infos__first__weight">
-                <input type="number" placeholder="Poids (kg)" {...register('weight', { required: 'Veuillez renseigner son poids', valueAsNumber: true })} defaultValue="10" className="dog__commun" />
+                <input type="number" placeholder="Poids (kg)" {...register('weight', { required: 'Veuillez renseigner son poids', valueAsNumber: true, max: { value: 90, message: 'Le poids ne doit pas dépasser 90kg.' } })} className="dog__commun" />
                 {errors.weight && <p className="errors">{errors.weight.message}</p>}
               </div>
             </div>
@@ -152,6 +152,7 @@ const DogForm = () => {
               {/* Description */}
               <div className="dog__form__input-infos__others__description">
                 <textarea
+                  rows="4"
                   placeholder="Une petite description de votre chien et de ce que vous recherchez :)"
                   {...register('description', { maxLength: { value: 200, message: 'Veuillez ne pas dépasser 200 caractères.' } })}
                 />
