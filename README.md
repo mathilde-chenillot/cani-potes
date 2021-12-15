@@ -29,7 +29,7 @@ Le but de cette application web est d'offrir la possibilité aux maîtres de chi
   et dont la finalité n'est pas forcément une prouesse technique.
 
 - Le projet doit être à la fois ambitieux et raisonnable, et pouvoir tenir dans un planning de *4 semaines*.
-  * **Sprint 0** : Première semaine sert à définir les bases, l'organisation, la structure du MVP du projet et la production de nombreux documents nécessaires au Titre professionnel ( *code interdit* ).
+  * **Sprint 0** : Première semaine servant à définir les bases, l'organisation, la structure du MVP du projet et la production de nombreux documents nécessaires au Titre professionnel ( *code interdit* ).
   * **Sprint 1/2** : ***Deux semaines*** pour coder le projet.
   * **Sprint 3** : Dernière semaine pour débug/test le projet pour sa présentation.
 
