@@ -16,11 +16,11 @@ Le but de cette application web est d'offrir la possibilité aux maîtres de chi
 
 ## Notre equipe
 
-- **Product Owner** : [Mathilde Chenillot](https://github.com/mathilde-chenillot)
-- **Scrum Master** : [Julien Collet](https://github.com/JulienCLLT)
+- **Product Owner - Dev Front** : [Mathilde Chenillot](https://github.com/mathilde-chenillot)
+- **Scrum Master - Dev Back** : [Julien Collet](https://github.com/JulienCLLT)
 - **Lead dev Front** : [Raphaël Charousset](https://github.com/RaphaelCharousset)
 - **Lead dev Back** : [Alexandra Bercoff](https://github.com/Alekiel42)
-- **Git Master** : [Anne Osolin](https://github.com/AnneOsolin)
+- **Git Master - Dev Front** : [Anne Osolin](https://github.com/AnneOsolin)
 
 
 #### Critères de projet
